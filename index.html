@@ -178,16 +178,6 @@
             </div>
         </section>
     </main>
-     <div class="contact_center">
-		<span class="contact_title" style="cursor: pointer; display: block">联<br>系<br>我<br>们<br></span>
-		<ul style="display: none;">
-			<li class="contact_title_big"><b><img style="width:36px; margin-top:-6px; margin-left:-6px; margin-right:10px;" src="static/picture/contact.png">联系我们</b><span style="cursor: pointer;"><i class="glyphicon glyphicon-remove"></i></span></li>
-			
-			<li class="hover_border"><span><img src="static/picture/telyell.png" style="width:24px;"></span><span class="contact_text">023-72239488</span></li>
-		
-			<li class="hover_border" style="cursor: pointer;"><span><img src="static/picture/qqyell.png" style="width:25px;"></span><span class="contact_text" style="font-size:12px;">3625878754@qq.com</span></li>
-		</ul>
-	</div>
     <footer>
         <section class="container">
             <div class="row row-bottom-padded-sm">
@@ -225,45 +215,6 @@
 <script type="text/javascript" src="static/js/jquery.cookie.js"></script>
 <script type="text/javascript" src="static/js/jquery.waypoints.min.js"></script>
 <script type="text/javascript" src="static/js/jquery.i18n.properties.min.js"></script>
-<script type="text/javascript" src="static/js/language.js"></script>
 <script type="text/javascript" src="static/js/modal.js"></script>
-<script type="text/javascript">
-    $.ajax({
-		type: "get",
-		url: "./pc/latest.yml",
-		success: (res)=>{
-			var _match = res.match(/PaoPao.+\.exe/),
-				newFileName = _match && _match[0];
-			if(newFileName) 
-				$('.window a').attr('href', `pc/${newFileName}`);
-		},
-	});
-	
-	$(document).ready(function(){
-		//联系我们
-       $('.contact_title').on('click',function(){
-        	$(this).hide();
-        	$(this).siblings('ul').show();
-        });
-		           
-		$('.contact_title_big span').on('click',function(){
-        	$(this).parents('ul').siblings('span').show();
-        	$(this).parents('ul').hide();
-		    if(isindex==true){
-				everytime=setTimeout(regon,8000);
-			}
-            
-        });
-        function regon(){
-              $('.contact_title').hide();
-        	  $('.contact_title').siblings('ul').show();
-         }
-         
-    });
-    
-    $(function(){
-    	$('#saltfc').trigger('click');
-    });
-</script>
 <script src="static/js/index.js"></script>
 </html>

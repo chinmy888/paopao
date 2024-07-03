@@ -4,7 +4,17 @@
     <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>paopao官网-泡泡聊天软件-泡泡聊天软件官网-MosGram 官方网站-MosGram</title>
+	<title>MosGram 官方网站-MosGram</title>
+  <!-- Facebook and Twitter integration -->
+	<meta property="og:title" content="MosGram">
+	<meta property="og:image" content="">
+	<meta property="og:url" content="">
+	<meta property="og:site_name" content="">
+	<meta property="og:description" content="">
+	<meta name="twitter:title" content="MosGram">
+	<meta name="twitter:image" content="">
+	<meta name="twitter:url" content="">
+	<meta name="twitter:card" content="">
     <link rel="stylesheet" type="text/css" href="static/css/animate.css">
     <link rel="stylesheet" type="text/css" href="static/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="static/css/icomoon.css">
@@ -34,15 +44,15 @@
             <ul>
                 <li class="active urlHref" data-href="#section1"><a class="i18n" name="navHome"></a></li>
                 <li class="urlHref" data-href="#section2"><a class="i18n" name="navSecurity"></a></li>
-                <li class="urlHref"><a class="i18n" target="_blank" href="https://www.dropbox.com/scl/fi/a41qsfg76gvfaaxmuuwdz/PaoPao_v1.8.4.zip?rlkey=9ngzvbuwce4odyeq5xcat99bt&st=opcvksgw&dl=1" name="navpay"></a></li>
+                <li class="urlHref"><a class="i18n" target="_blank" href="mosGramPayDocuments.html" name="navpay"></a></li>
                 <li class="urlHref"><a class="i18n" target="_blank" href="inNotice.html" name="notice"></a></li>
                 <li id="langLi">
                     <a id="langBtn">中文-简</a>
                     <img src="static/picture/drop.png" class="langIcon">
                     <ul class="lang-list" id="langPanel">
-                        <li class="lang i18n" name="zh-CN" onClick="langClick('zh-CN');">中文-简<i></i></li>
-                       <li class="lang i18n" name="zh-TW" onClick="langClick('zh-TW');">中文-繁<i></i></li>
-                       <li class="lang i18n" name="en" onClick="langClick('en')">English<i></i></li>
+                        <li class="lang i18n" name="zh-CN" onclick="langClick('zh-CN');">中文-简<i></i></li>
+                       <li class="lang i18n" name="zh-TW" onclick="langClick('zh-TW');">中文-繁<i></i></li>
+                       <li class="lang i18n" name="en" onclick="langClick('en')">English<i></i></li>
                     </ul>
                 </li>
             </ul>
@@ -82,7 +92,7 @@
                                     <span class="border bottom-left"></span>
                                     <span class="border bottom-right"></span>
                                     <div class="window">
-                                        <a href="https://www.dropbox.com/scl/fi/a41qsfg76gvfaaxmuuwdz/PaoPao_v1.8.4.zip?rlkey=9ngzvbuwce4odyeq5xcat99bt&st=opcvksgw&dl=1" target="_blank">
+                                        <a href="pc/PaoPao_v1.8.2.exe" target="_blank">
                                             <img src="static/picture/Windows.png">
                                             <p class="i18n title" name="downWindows">Windows版</p>
                                         </a>
@@ -178,6 +188,16 @@
             </div>
         </section>
     </main>
+     <div class="contact_center">
+		<span class="contact_title" style="cursor: pointer; display: block">联<br>系<br>我<br>们<br></span>
+		<ul style="display: none;">
+			<li class="contact_title_big"><b><img style="width:36px; margin-top:-6px; margin-left:-6px; margin-right:10px;" src="static/picture/contact.png">联系我们</b><span style="cursor: pointer;"><i class="glyphicon glyphicon-remove"></i></span></li>
+			
+			<li class="hover_border"><span><img src="static/picture/telyell.png" style="width:24px;"></span><span class="contact_text">023-72239488</span></li>
+		
+			<li class="hover_border" style="cursor: pointer;"><span><img src="static/picture/qqyell.png" style="width:25px;"></span><span class="contact_text" style="font-size:12px;">3625878754@qq.com</span></li>
+		</ul>
+	</div>
     <footer>
         <section class="container">
             <div class="row row-bottom-padded-sm">
@@ -217,5 +237,52 @@
 <script type="text/javascript" src="static/js/jquery.i18n.properties.min.js"></script>
 <script type="text/javascript" src="static/js/language.js"></script>
 <script type="text/javascript" src="static/js/modal.js"></script>
+<script type="text/javascript">
+    $.ajax({
+		type: "get",
+		url: "./pc/latest.yml",
+		success: (res)=>{
+			var _match = res.match(/PaoPao.+\.exe/),
+				newFileName = _match && _match[0];
+			if(newFileName) 
+				$('.window a').attr('href', `pc/${newFileName}`);
+		},
+	});
+	
+	$(document).ready(function(){
+		//联系我们
+       $('.contact_title').on('click',function(){
+        	$(this).hide();
+        	$(this).siblings('ul').show();
+        });
+		           
+		$('.contact_title_big span').on('click',function(){
+        	$(this).parents('ul').siblings('span').show();
+        	$(this).parents('ul').hide();
+		    if(isindex==true){
+				everytime=setTimeout(regon,8000);
+			}
+            
+        });
+        function regon(){
+              $('.contact_title').hide();
+        	  $('.contact_title').siblings('ul').show();
+         }
+         
+    });
+    
+    $(function(){
+    	$('#saltfc').trigger('click');
+    });
+</script>
 <script src="static/js/index.js"></script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?86b1393a55dfcfaa82dd31a1b9e55c8f";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 </html>
